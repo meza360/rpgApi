@@ -26,7 +26,7 @@ namespace API
                 }
             }   
 
-            if (!(context.Characters.Any()))
+            if (!context.Characters.Any())
             {
                 
                 var characters = new List<Character>
