@@ -1,5 +1,6 @@
 using API;
 using API.Extensions;
+using API.Services;
 using Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,8 +20,12 @@ builder.Services.AddSwaggerGen();
 //Adds IdentityCore services to container
 builder.Services.AddIdentityServiceExtension(_config);
 
+
 //Adds Oracle services to container
-builder.Services.AddOracleServiceExtension(_config);
+//builder.Services.AddOracleServiceExtension(_config);
+
+//Adds SqlLite services to container
+builder.Services.AddSqlLiteServiceExtension(_config);
 
 var app = builder.Build();
 
@@ -67,6 +72,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+/*Adds Authentication to container
+This comes authenticates from our IdentityServiceExtension*/
+app.UseAuthentication(); //We must specify which Controller methods requires authentication
 
 app.UseAuthorization();
 

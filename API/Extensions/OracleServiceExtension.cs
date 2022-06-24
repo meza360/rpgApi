@@ -13,11 +13,8 @@ namespace API.Extensions
                     options.UseOracle(
                         config.GetConnectionString("OracleDevConnection")
                     );
-                    
                 }
-  
             );
-            
             return services;
         }
 
